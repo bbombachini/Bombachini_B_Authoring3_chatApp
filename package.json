@@ -1,0 +1,43 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "web app created with node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbombachini/chatApp.git"
+  },
+  "keywords": [
+    "chat",
+    "app",
+    "node",
+    "npm"
+  ],
+  "author": "Barbara Bombachini",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bbombachini/chatApp/issues"
+  },
+  "homepage": "https://github.com/bbombachini/chatApp#readme",
+  "dependencies": {
+    "autoprefixer": "^7.2.5",
+    "express": "^4.16.2",
+    "grunt": "^1.0.1",
+    "postcss-cli": "^4.1.1",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.9.0"
+  }
+}
