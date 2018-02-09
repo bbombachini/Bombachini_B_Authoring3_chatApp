@@ -23,21 +23,21 @@
   },
   "homepage": "https://github.com/bbombachini/chatApp#readme",
   "dependencies": {
-    "autoprefixer": "^7.2.5",
     "express": "^4.16.2",
-    "grunt": "^1.0.1",
-    "postcss-cli": "^4.1.1",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {
+    "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "grunt": "^1.0.1",
     "grunt-babel": "^7.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-imagemin": "^2.0.1",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-postcss": "^0.9.0"
+    "grunt-postcss": "^0.9.0",
+    "postcss-cli": "^4.1.1"
   }
 }
