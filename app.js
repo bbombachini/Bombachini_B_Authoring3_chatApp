@@ -1,31 +1,35 @@
 const express = require('express');
 const app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// var http = require('http').Server(app);
+const io = require('socket.io')(); //activate the chat plugin - instatiated
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-});
+//serve up static files
+app.use(express.static('public'));
 
-app.get('/contact', (req, res) => {
-  res.sendFile(__dirname + '/contact.html')
-});
+//add routes
+app.use(require('./routes/index'));
+app.use(require('./routes/portfolio'));
+app.use(require('./routes/contact'));
 
-app.get('/portfolio', (req, res) => {
-  res.sendFile(__dirname + '/portfolio.html')
-});
-
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-    
-  });
-  // socket.on('disconnect', function(){
-  //   console.log('user disconnected');
-  // });
-});
-
-http.listen(3000, () => {
+const server = app.listen(3000, () => {
   console.log('listening on port 3000')
 });
-//run on terminal $ node app
+
+io.attach(server);
+
+io.on('connection', socket => { //function(socket) { ... }
+  console.log('a user has connected');
+
+  io.emit('chat message', { for : 'everyone', message: `${socket.id} is here!`});
+
+  //handle messages sent from the client
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', { for : 'everyone', message: msg });
+  });
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    io.emit('disconnect message', `${socket.id} has left the building`);
+  });
+});
+
+//run on terminal $ nodemon app

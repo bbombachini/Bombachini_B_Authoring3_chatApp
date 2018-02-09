@@ -5,10 +5,10 @@ module.exports = function(grunt) {
     concat : {
       dist: {
         src: [
-          'js/modules/*.js',
-          'js/main.js'
+          'public/js/modules/*.js',
+          'public/js/main.js'
         ],
-        dest: 'prod/concat.js'
+        dest: 'public/js/prod/concat.js'
       }
     },
 
@@ -19,15 +19,15 @@ module.exports = function(grunt) {
       },
     dist: {
       files: {
-                'prod/production.js' : 'prod/concat.js'
+                'public/js/prod/production.js' : 'public/js/prod/concat.js'
           }
       }
     },
 
     uglify : {
       build: {
-        src: 'prod/production.js',
-        dest: 'prod/production.min.js'
+        src: 'public/js/prod/production.js',
+        dest: 'public/js/prod/production.min.js'
       }
     },
 
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
           noCache: true
         },
         files : {
-          'css/main.css' : 'css/scss/main.scss'
+          'public/css/main.css' : 'public/css/scss/main.scss'
         }
       }
     },
@@ -53,37 +53,37 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'css/main.css'
+        src: 'public/css/main.css'
       }
     },
     imagemin: {
           dynamic: {
               files: [{
                   expand: true,
-                  cwd: 'img/',
+                  cwd: 'public/img/',
                   src: ['*.{png,jpg,gif}'],
-                  dest: 'img/'
+                  dest: 'public/img/'
               }]
           }
       },
 
     watch : {
       scripts : {
-        files : ['js/main.js', 'js/modules/*.js'],
+        files : ['public/js/main.js', 'public/js/modules/*.js'],
         tasks : ['concat', 'babel', 'uglify'],
         options : {
           spawn : false
         }
       },
       sass: {
-        files: ['css/scss/*.scss'],
+        files: ['public/css/scss/*.scss'],
         tasks: ['sass','postcss'],
         options: {
             spawn: false,
         }
       },
       images: {
-        files: ['img/*.{png,jpg,gif}'],
+        files: ['public/img/*.{png,jpg,gif}'],
         tasks: ['imagemin'],
         options: {
             spawn: false,
@@ -102,5 +102,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   //Tasks performs when grunt run
-  grunt.registerTask('default', ['concat', 'babel', 'uglify', 'sass', 'watch', 'imagemin']);
+  grunt.registerTask('default', ['concat', 'babel', 'uglify', 'sass', 'imagemin', 'watch']);
 };
+// npm install --save-dev git://github.com/gruntjs/grunt-contrib-uglify.git#harmony
