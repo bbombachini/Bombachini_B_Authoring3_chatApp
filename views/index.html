@@ -5,36 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
   <script src="/socket.io/socket.io.js"></script>
   <title>Chat App</title>
 </head>
 <body>
-  <h1>Welcome to Chat App</h1>
-  <p>Where conversation happens</p><br>
+  <div class="container">
+    <div class="content">
+      <h1>Welcome to Chat App</h1>
+        <div class="header">
+          <p>Where conversation happens</p><br>
+          <label for="nickname">Enter your nickname:</label>
+          <input type="text" class="nickname" placeholder="Nickname">
+          <button id="enter">Enter</button>
+        </div>
 
-    <input type="text" class="nickname" placeholder="What is your nickname?">
-    <ul id="messages"></ul>
-    <form>
-      <input class="message" type="text" id="m" autocomplete="off">
-      <button>send</button>
-    </form>
+        <div id="chat">
 
+          <div class="online">
+            <h3>Online Users</h3>
+            <ul class="users"></ul>
+          </div>
 
+          <div class="chatDiv">
+            <ul id="messages"></ul>
+            <form>
+              <input class="message" type="text" id="m" autocomplete="off">
+              <button>send</button>
+            </form> 
+          </div>
+
+        </div>
+
+    </div>
+  </div>
     <script type="text/javascript" src="js/main.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-        });
-      });
-  </script> -->
 
 </body>
 </html>

@@ -1,0 +1,4 @@
+node_modules
+.DS_STORE
+.sass-cache
+main.css.map
