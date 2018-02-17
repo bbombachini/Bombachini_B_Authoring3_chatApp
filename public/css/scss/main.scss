@@ -1,27 +1,122 @@
 //Sass Document
 
+@import 'reset';
+@import 'colours';
+
 /* reset */
 * {
 	margin: 0; padding: 0; box-sizing: border-box;
 }
 
-body { font: 13px Helvetica, Arial; }
-
-form {
-	background: #000;
-	padding: 3px;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-
-	input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
-
-	button { width: 9%; background: rgb(130, 224,255); border: none; padding: 10px; }
+body {
+	font: 2vw 'Nanum Gothic',Helvetica, Arial, sans-serif;
 }
 
-#messages {
-	list-style-type: none; margin: 0; padding: 0;
+.container {
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+	background: rgb(45,70,119); /* Old browsers */
+	background: -webkit-linear-gradient(bottom left, rgba(45,70,119,1) 0%, rgba(58,173,173,1) 100%);
+	background: -o-linear-gradient(bottom left, rgba(45,70,119,1) 0%, rgba(58,173,173,1) 100%);
+	background: linear-gradient(to top right, rgba(45,70,119,1) 0%, rgba(58,173,173,1) 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d4677', endColorstr='#3aadad',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-	li { padding: 5px 10px;	}
-	li:nth-child(odd) { background: #eee; }
+		.content{
+		width: 80vw;
+		// min-height: 60vh;
+		max-height: 100vh;
+		position: relative;
+		overflow: scroll;
+		background-color: $snow;
+		text-align: center;
+		.header{
+			padding: 3vw;
+			label {
+				font-size: 1vw;
+			}
+			input{
+				-webkit-appearance: none;
+				background-color: transparent;
+				border: 0;
+				border-bottom: 1px solid $darkgrey;
+			}
+			#enter{
+				background-color: $blue;
+				text-transform: uppercase;
+				color: #fff;
+				border: 0;
+				padding: 5px;
+			}
+		}
+		h1 {
+			color: #fff;
+			font-size: 2vw;
+			padding: 2vw;
+			background-color: $salmon;
+		}
+
+		#chat {
+			display: none;
+			width: 100%;
+			grid-template-columns: 1fr 3fr;
+			padding-top: 2vw;
+			position: relative;
+			.chatDiv{
+				width: 100%;
+				// position: relative;
+				form{
+					position: fixed;
+					bottom: 0 !important;
+					right: 0;
+					background-color: $darkgrey;
+					padding: 8px;
+					width: 100%;
+					input {
+						-webkit-appearance: none;
+						border: 0;
+						padding: 10px;
+						width: 90%;
+						}
+					button {
+						width: 8%;
+						background: $blue;
+						border: none;
+						color: #fff;
+						padding: 10px;
+						text-transform: uppercase;
+					}
+				}
+				#messages {
+					list-style-type: none;
+					padding: 10px;
+					margin-bottom: 40px;
+					li {
+						font-size: 1.5vw;
+						padding: 5px 10px;
+						border-radius: 50px;
+						margin: 2px;
+						span{
+							font-size: 1vw;
+						}
+					}
+					.on-status{
+						color: $blue;
+					}
+					.off-status{
+						color: $salmon;
+					}
+				}
+			}
+			ul.users li{
+				font-size: 1.8vw;
+				padding: 1vh;
+				color: $blue;
+			}
+		}
+	}
 }
+// run with grunt

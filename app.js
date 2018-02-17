@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-// var http = require('http').Server(app);
 const io = require('socket.io')(); //activate the chat plugin - instatiated
+var users = [];
 
 //serve up static files
 app.use(express.static('public'));
@@ -19,16 +19,34 @@ io.attach(server);
 
 io.on('connection', socket => { //function(socket) { ... }
   console.log('a user has connected');
-
-  io.emit('chat message', { for : 'everyone', message: `${socket.id} is here!`});
-
   //handle messages sent from the client
+  updateUsers();
   socket.on('chat message', (msg) => {
-    io.emit('chat message', { for : 'everyone', message: msg });
+    io.emit('chat message', { for : 'everyone', message: msg, color: socket.color });
   });
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-    io.emit('disconnect message', `${socket.id} has left the building`);
+
+  //new user message
+  socket.on('new user', ({nickname, newColor}) => {
+    socket.username = nickname;
+    io.emit('chat message', { for : 'everyone', message: `<li class="on-status">${nickname} is here!`});
+    users.push(socket.username);
+    updateUsers();
+    socket.color = newColor;
+  });
+
+  // function to update list of active users
+  function updateUsers() {
+    io.sockets.emit('list users', users);
+  }
+
+  //disconnect function
+  socket.on('disconnect', (data) => {
+    console.log(socket.username);
+    if(socket.username){
+      users.splice(users.indexOf(socket.username), 1);
+      io.emit('disconnect message', `<li class="off-status">${socket.username} has left the chat`);
+      updateUsers();
+    }
   });
 });
 
