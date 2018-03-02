@@ -1,5 +1,5 @@
 # chatApp
-Web chat app created with Node and Socket.io
+Web chat app created with Node, Express and Socket.io
 
 ## Getting Started
 Git clone the repo:
