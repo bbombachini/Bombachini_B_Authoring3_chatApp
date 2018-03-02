@@ -30,12 +30,11 @@ Git was used as a version control system since the beginning of the project.
 + Barbara Bombachini - *http://www.bbombachini.com*
 
 ## Build with
-Node Modules
-Nodemon
-EXPRESS
-Socket.io
-GIT
-GRUNT
++ Node Modules
++ Nodemon
++ EXPRESS
++ Socket.io
++ GRUNT
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
