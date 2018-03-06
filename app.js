@@ -8,8 +8,6 @@ app.use(express.static('public'));
 
 //add routes
 app.use(require('./routes/index'));
-app.use(require('./routes/portfolio'));
-app.use(require('./routes/contact'));
 
 const server = app.listen(3000, () => {
   console.log('listening on port 3000')
